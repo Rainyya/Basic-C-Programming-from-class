@@ -1,0 +1,245 @@
+#include <iostream>
+using namespace std;
+int main ()
+{
+	int mainOption=0, subOption=0,subAmount=0,shirt=0,pant=0,priceTotal=0,shirtStock=100,pantStock=100;
+	int countPant=0,countShirt=0,countPricePant=0,countPriceShirt=0, countMember=0,countPriceMember=0,countNettotal=0, countPriceTotal=0, countDiscountShirtTotal=0,countDiscountPantTotal=0  ;
+	char again = 'Y', typeMember=0;
+	float money=0,moneyChange=0,moneyPrice=0, netTotal=0;
+	do
+	{
+		// Main Menu
+		cout << " ======================================="<<endl;
+		cout << " |                                     |"<<endl;
+		cout << " |         Melona's Clothing Store     |"<<endl;
+		cout << " |                                     |"<<endl;
+		cout << " ======================================="<<endl<<endl;
+		cout << " Admin Setting " <<endl<<endl;
+		cout << " 1) Products" << endl;
+		cout << " 2) Total Amount (Report)" << endl;
+		cout << " 3) Exit" << endl;	    
+		cout <<endl<< " Select the option : ";
+		cin >> mainOption;
+		system("cls");
+		switch(mainOption)
+		{			
+		// Sub menu
+		case 1 :
+			do
+			{				
+				cout <<" ---------------------------- "<<endl;
+				cout << " Products Option"<<endl;
+				cout <<" ---------------------------- "<<endl<<endl;
+				cout << " 1) Check stock"<< endl;
+				cout << " 2) Sell Product"<< endl;
+				cout << " 3) Exit"<< endl;	    
+	 			cout <<endl<< " Select the sub option : ";
+	 			cin >> subOption;
+	 			system("cls");
+				switch(subOption)
+				{			
+				case 1 : 
+					do
+					{
+						// Stock
+						system("cls");
+						cout <<" ---------------------------- "<<endl;
+						cout << " Check stock"<<endl;
+						cout <<" ---------------------------- "<<endl<<endl;
+						cout << " In stock"<<endl;											
+						cout <<" Shirts Total "<<shirtStock<<endl;
+						cout <<" Pants Total "<<pantStock<<endl<<endl;
+						cout << " Check stock again ? (Y/N) : ";
+	    				cin >> again;	
+					}
+					while((again == 'Y') || (again == 'y'));
+					system("cls");		
+					break;	
+					
+				case 2 :	
+					do
+					{
+						// Enter number of products to sell
+						system("cls");
+						cout <<" ---------------------------- "<<endl;
+						cout << " Sell Product"<<endl;
+						cout <<" ---------------------------- "<<endl<<endl;
+						cout << " Enter Shirts (250): ";
+						cin >> shirt;
+						countShirt+=shirt;
+						countPriceShirt+=(shirt*250);
+						cout << " Enter Pants (200): ";
+						cin >> pant;
+						countPant+=pant;
+						countPricePant+=(pant*200);											
+						
+						// Calculate price and remaining stock
+						priceTotal=(shirt*250)+(pant*200);											
+						shirtStock-=shirt;
+						pantStock-=pant;																
+						
+						// Member type
+						cout << " Price total : "<<priceTotal<<" Baht"<<endl<<endl;	
+						countPriceTotal+=priceTotal;										
+						bool isError=false;
+						do 
+						{
+							isError = false;
+							cout << " Enter your member Type (N/V): ";
+							cin >> typeMember;
+							if ((typeMember=='n')||(typeMember=='N'))
+							{
+								netTotal=priceTotal;
+							}
+							else if ((typeMember=='v')||(typeMember=='V'))
+							{
+								cout <<" VIP Discount 5%"<<endl;
+								int discountTotal=priceTotal*(5.0/100.0);
+								netTotal=priceTotal-discountTotal;
+								
+								countMember+=1;
+								countPriceMember+=discountTotal;
+								countDiscountShirtTotal += (shirt * 250) *(5.0/100.0);
+								countDiscountPantTotal += (pant * 200) *(5.0/100.0);
+							}
+							else
+							{
+								cout <<endl<<" Error !"<<endl;
+								cout <<" Please select N or V "<<endl<<endl;	
+								isError=true;	
+							}
+						} while (isError);
+							
+						cout <<" Net Total : "<<netTotal<<" Baht"<<endl<<endl; 
+						countNettotal+=netTotal;
+						
+						// Money Change								
+						cout <<" Money Change "<<endl;
+						cout <<" Enter Money ";
+						cin >> money;
+						moneyChange=money-netTotal;
+						cout << " Change : "<<moneyChange<<" Baht"<<endl<<endl;											
+						cout << " Sell again ? (Y/N) : ";
+        				cin >> again;
+						cout <<" You select : "<<again<<endl;
+					} while((again == 'Y') || (again == 'y'));	
+					system("cls");
+					break;												
+				
+				case 3 : 	
+					cout << " Exit "<<endl<<endl;  
+					break;	   		
+				default :
+				 	cout<< " Error !"<<endl;
+				 	break;
+				}
+			} while	(subOption == 1 || subOption == 2);	
+			system("cls");
+			break;			  
+		case 2 :
+			do
+			{
+				// Report Menu
+				cout <<" --------------------------"<<endl;
+				cout <<" Total Amount Menu (Report)"<<endl;
+				cout <<" --------------------------"<<endl<<endl;
+				cout <<" 1) Gross Amount "<<endl;
+				cout <<" 2) Net Amount"<<endl;
+				cout <<" 3) Sales Shirts Amount "<<endl;
+				cout <<" 4) Sales pants Amount"<<endl;
+				cout <<" 5) Total Shirt Sales"<<endl;
+				cout <<" 6) Total pant Sales"<<endl;
+				cout <<" 7) Total Member"<<endl;
+				cout <<" 8) Total Amount Discount "<<endl;
+				cout <<" 9) Exit "<<endl<<endl;
+				cout << " Select the Total Amount menu : ";
+	 			cin >> subAmount;
+	 			system("cls");
+				switch(subAmount)
+				{
+					case 1 : 							
+						cout <<" -------------------------- "<<endl;
+						cout <<" Gross Amount (Report)"<<endl; 
+						cout <<" -------------------------- "<<endl<<endl;
+			  			cout <<" Total is "<<countPriceTotal<<" Baht"<<endl<<endl; 
+						system(" pause");
+						system("cls");
+						break;
+	
+					case 2 : 	
+						cout <<" -------------------------- "<<endl;
+						cout <<" Net Amount (Report)"<<endl;
+						cout <<" -------------------------- "<<endl<<endl;
+						cout <<" Total is "<<countNettotal<<" Baht"<<endl<<endl;
+						system(" pause");
+						system("cls");
+						break;
+					case 3 : 	
+						cout <<" -------------------------- "<<endl;
+						cout << " Sales Shirts Amount (Report)"<<endl;
+						cout <<" -------------------------- "<<endl<<endl;
+						cout << " Total is "<<countShirt<<" Shirt(s)"<<endl<<endl;
+						system(" pause");
+						system("cls");
+						break;
+					case 4 : 	
+						cout <<" -------------------------- "<<endl;
+						cout << " Sales pants Amount (Report)"<<endl; 
+						cout <<" -------------------------- "<<endl;
+			 			cout << " Total is "<<countPant<<" Pant(s)"<<endl<<endl;
+						system(" pause");
+						system("cls");
+						break;
+					case 5 : 	
+						cout <<" -------------------------- "<<endl;
+						cout <<" Total Shirt Sales (Report)"<<endl;
+						cout <<" -------------------------- "<<endl<<endl;
+						cout << " Total is "<<countPriceShirt - countDiscountShirtTotal <<" Baht"<<endl<<endl;
+						system(" pause");
+						system("cls");
+						break;
+					case 6 : 	
+						cout <<" -------------------------- "<<endl;
+						cout <<" Total pant Sales (Report)"<<endl;
+						cout <<" -------------------------- "<<endl<<endl;
+						cout << " Total is "<<countPricePant - countDiscountPantTotal <<" Baht"<<endl<<endl;
+						system(" pause");
+						system("cls");
+						break;
+					case 7 : 	
+						cout <<" -------------------------- "<<endl;
+						cout <<" Total Member (Report)"<<endl; 
+						cout <<" -------------------------- "<<endl<<endl;
+						cout << " Total is "<<countMember<<" Member(s)"<<endl<<endl;	
+						system(" pause");
+						system("cls");
+						break;
+					case 8 : 	
+						cout <<" -------------------------- "<<endl;
+						cout <<" Total Amount Discount (Report)"<<endl;
+						cout <<" -------------------------- "<<endl<<endl;
+						cout << " Total is "<<countPriceMember<<" Baht"<<endl<<endl;
+						system(" pause");
+						system("cls");
+						break;
+					case 9 : 	
+						cout << " Exit ";
+						break;										   		
+					default : 	
+						cout<< " Error !"<<endl;
+						break;
+				} 																							
+			} while	(subAmount<9);
+			system("cls");		
+			break;		   	
+		
+		case 3 : 	
+			cout << " Exit"<<endl;  
+			break;		   	
+		default : 
+			cout<< " Error !"<<endl;
+			break;	
+		}	
+	} while( (mainOption == 1) || (mainOption == 2) );	
+	return 0;
+}
