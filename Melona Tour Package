@@ -1,0 +1,143 @@
+#include <iostream>
+using namespace std;
+int main() 
+{
+	int tour=0, tourist=0, priceTour=0, dayRentCar=0, priceRentCar=0, dayRoom=0, roomExtraPrice=0, totalPrice=0, tourMoney=0, change=0;
+	int countPrice=0, tourCount=0, countRoomExtraPrice=0, countPriceRentCar=0, tourCoutPortugal=0, tourCoutSpain=0, tourCoutMonaco=0, tourCoutPoland=0, tourCoutBulgarian=0   ;
+	char again = 'Y', rentCar ='Y', roomExtra='Y';
+	cout <<" ============================="<<endl;
+	cout <<" Melona's Package tour"<<endl;
+	cout <<" ============================="<<endl;
+	cout <<" 1) Portugal Tour "<<endl;
+	cout <<"    50,000 Baht/ person"<<endl;
+	cout <<"    6 days and 5 nights"<<endl;
+	cout <<" 2) Bulgarian Tour "<<endl;
+	cout <<"    45,000 Baht/ person"<<endl;
+	cout <<"    6 days and 5 nights"<<endl;
+	cout <<" 3) Poland Tour "<<endl;
+	cout <<"    46,000 Baht/ person"<<endl;
+	cout <<"    6 days and 5 nights"<<endl;
+	cout <<" 4) Monaco Tour "<<endl;
+	cout <<"    51,000 Baht/ person"<<endl;
+	cout <<"    6 days and 5 nights"<<endl;
+	cout <<" 5) Spain Tour "<<endl;
+	cout <<"    55,000 Baht/ person"<<endl;
+	cout <<"    6 days and 5 nights"<<endl;
+	cout <<endl;
+	system(" pause");
+	system("cls");
+	do
+	{
+		priceRentCar = 0;
+		roomExtraPrice  =0;
+		priceTour = 0;
+		dayRentCar = 0;
+		dayRoom = 0;
+		
+		cout <<" Enter Tour Package (1-5) : ";
+		cin >> tour;
+		cout <<" Enter Number Tourist : ";
+		cin >> tourist;
+		cout <<endl;
+		cout <<" More options....."<<endl;
+		cout <<" Do you want to rent a car? (Y/N) ";
+		cin >> rentCar;
+		if ((rentCar=='Y')||(rentCar=='y'))
+		{
+			cout <<" How many days do you want to rent a car ? ";
+			cin >> dayRentCar;
+			priceRentCar=dayRentCar*2000;
+			countPriceRentCar+=priceRentCar;
+			cout <<" Total price car rent is : "<<priceRentCar<<endl;				
+		}
+		cout <<endl;		
+		cout <<" Do you want to rent an extra room ? (Y/N) ";
+	    cin >> roomExtra;
+	    if ((roomExtra=='Y')||(roomExtra=='y'))
+	    {
+			cout <<" For how many days do you want to rent a room ? ";
+			cin >> dayRoom;						
+	    }
+		//cout <<endl;	
+		switch(tour)
+		{
+			case 1 : priceTour=tourist*50000; 				 
+					 roomExtraPrice=dayRoom*2000;
+					 tourCount+=1;						 
+					 tourCoutPortugal+=1;
+					 countRoomExtraPrice+=roomExtraPrice;						     		
+					 break;
+			case 2 : priceTour=tourist*45000; 
+					 roomExtraPrice=dayRoom*1500; 
+					 tourCount+=1;
+					 tourCoutBulgarian+=1;
+					 countRoomExtraPrice+=roomExtraPrice;	
+					 break;
+			case 3 : priceTour=tourist*46000;
+					 roomExtraPrice=dayRoom*1200;
+					 tourCount+=1;
+					 tourCoutPoland+=1;
+					 countRoomExtraPrice+=roomExtraPrice;	
+					 break;
+			case 4 : priceTour=tourist*51000;
+					 roomExtraPrice=dayRoom*1600;
+					 tourCount+=1;	
+					 tourCoutMonaco+=1;
+					 countRoomExtraPrice+=roomExtraPrice;
+					 break;
+		    case 5 : priceTour=tourist*55000;
+					 roomExtraPrice=dayRoom*2100;
+					 tourCount+=1;
+					 tourCoutSpain+=1;
+					 countRoomExtraPrice+=roomExtraPrice;	
+		   			 break;
+			default: cout<< " Error !";
+					 break;	
+		}				
+		if((roomExtra=='Y')||(roomExtra=='y'))
+		{
+			cout <<" Total price room extra is : "<<roomExtraPrice<<endl;	
+		}			
+		totalPrice=priceTour+priceRentCar+roomExtraPrice;
+		cout <<endl;
+		countPrice+=totalPrice;
+		cout <<" Price tour is "<<totalPrice<<endl;
+		cout <<" For "<<tourist<<" peple(s)"<<endl;
+		cout << " Enter Money : ";
+		cin >> tourMoney;
+		change=tourMoney-totalPrice;
+		cout << " Change : "<<change<<" Baht"<<endl<<endl; 
+	 	cout << " Again ? (Y/N) : ";
+		cin >> again;
+		system("cls");		
+	} while((again == 'Y') || (again == 'y'));		
+	cout <<" ========================"<<endl;
+	cout << " Summary today : "<<endl;
+	cout <<" ========================"<<endl;	
+	cout <<" Income total is "<<countPrice<<" Baht "<<endl;
+	cout <<" Count tour sell : "<<tourCount<<endl;
+	//cout <<" ------------------------"<<endl;
+	cout <<" Tour sell today  "<<endl;
+	cout <<" ------------------------"<<endl;	
+	if(tourCoutPortugal>=1)
+	{
+		cout << " Portugal : " <<tourCoutPortugal<<endl;
+	}
+	if(tourCoutBulgarian>=1)
+	{
+		cout << " Bulgarian : " <<tourCoutBulgarian<<endl;
+	}
+	if(tourCoutPoland>=1)
+	{
+		cout << " Poland : " <<tourCoutPoland<<endl;
+	}
+	if(tourCoutMonaco>=1)
+	{
+		cout << " Monaco : " <<tourCoutMonaco<<endl;
+	}
+	if(tourCoutSpain>=1)
+	{
+		cout << " Spain : " <<tourCoutSpain<<endl;
+	}
+	return 0;
+}
