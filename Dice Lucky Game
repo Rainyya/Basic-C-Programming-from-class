@@ -1,0 +1,228 @@
+#include <iostream> 
+#include <stdlib.h>    
+#include <time.h> 
+#include <windows.h>       
+using namespace std;
+int main()
+{
+	int mainOption=0, creditScore=3, iRand=0, iRandTotal=0, iScore=0, resetScore=0,resetCredit=0, creditStart=3 ; 
+	bool inGame = false;
+	char guess = 'L', again = 'Y';
+	HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE); 	
+	do
+	{
+		if (!inGame)
+		{
+			cout << " Dice Lucky Game !"<<endl;
+			cout << " Admin mode"<<endl;
+			cout << " 1) Play Game mode" << endl;
+			cout << " 2) Setting Game" << endl;
+			cout << " 3) Shut Down" << endl;	    
+			cout <<endl<< " Your Select : ";
+			cin >> mainOption;
+		}		
+		switch(mainOption)
+		{
+		case 1 : 	
+			//1.1
+			inGame = true;
+			system("cls");
+			cout << " ======================"<<endl; 
+			cout << " |                     |"<<endl;
+			cout << " |     WELCOME !       |"<<endl;
+			cout << " |   Dice Lucky Game   |"<<endl;
+			cout << " |                     |"<<endl;
+			cout << " ======================"<<endl<<endl;
+			cout << " >>> To Play New Game"<<endl; 
+			SetConsoleTextAttribute(hStdOut, 11);
+			system(" pause");
+			SetConsoleTextAttribute(hStdOut, 7);
+			system("cls");
+
+			// 1.2			
+			cout << " ======================="<<endl; 
+			cout << " |                     |"<<endl;
+			cout << " |      WELCOME !      |"<<endl;
+			cout << " |";
+			SetConsoleTextAttribute(hStdOut, 14);												
+			cout << " You Have "<<creditScore<< " Credit ! ";
+			SetConsoleTextAttribute(hStdOut, 7);
+			cout << "|"<<endl;
+			cout << " |                     |"<<endl;
+			cout << " ======================="<<endl<<endl;
+			cout << " >>> To Play New Game"<<endl; 
+			SetConsoleTextAttribute(hStdOut, 11);
+			system(" pause");
+			SetConsoleTextAttribute(hStdOut, 7);
+			do
+			{
+				srand (time(NULL));
+	    		iRand = rand() % 6 + 1;
+				system("cls");			
+
+				// Enter Guess L/H 1.3
+				cout << endl<<"       ?    ?    ?     "<<endl<<endl;
+				cout << "       LOW or HIGH      "<<endl;
+				cout << "    ( 3-11)  (12-18)    "<<endl<<endl;
+				cout <<endl<< " >>> Your Select LOW / HIGH ?"<<endl;
+				SetConsoleTextAttribute(hStdOut, 11);
+				cout << " Select (L/H) : ";
+				cin >> guess;				
+				SetConsoleTextAttribute(hStdOut, 7);
+				
+				// Random L/H Number 1.4
+				system("cls");
+				cout <<endl<< "      "<<iRand<<"    "<<iRand<<"    "<<iRand<<endl<<endl;
+				iRandTotal=iRand+iRand+iRand;
+				SetConsoleTextAttribute(hStdOut, 10);
+				cout << "         [ "<<iRandTotal<<" ] "<<endl;
+				SetConsoleTextAttribute(hStdOut, 7);
+				
+				// Random Low				
+				if ((guess=='L')||(guess=='l'))
+				{				
+					if (iRandTotal<=11)
+					{
+						
+						SetConsoleTextAttribute(hStdOut, 10);
+						cout << "     LOW ";
+						SetConsoleTextAttribute(hStdOut, 7);
+						cout << " or ";
+						cout << " HIGH "<<endl;
+						cout << "    ( 3-11)  (12-18)   "<<endl<<endl;
+						cout << " WOW ! You Won !!";
+						iScore +=1;
+						SetConsoleTextAttribute(hStdOut, 10);
+						cout << " Your Score [+1]"<<endl<<endl;
+						SetConsoleTextAttribute(hStdOut, 7);
+						cout << " Score "<<iScore<< " / " <<creditScore<<" Credit"<<endl;							
+					}
+					else if (iRandTotal>=11)
+					{
+						cout << "     LOW ";
+						cout << " or ";
+						SetConsoleTextAttribute(hStdOut, 10);
+						cout << " HIGH "<<endl;
+						SetConsoleTextAttribute(hStdOut, 7);
+						cout << "    ( 3-11)  (12-18)   "<<endl<<endl;
+						cout << " Ahh ! You Fail !!";
+						creditScore -=1;
+						SetConsoleTextAttribute(hStdOut, 12);
+						cout << " Your Credit [-1]"<<endl<<endl;
+						SetConsoleTextAttribute(hStdOut, 7);
+						cout << " Score "<<iScore<< " / " <<creditScore<<" Credit"<<endl;
+					}
+				cout << " >>> To Play Next Game "<<endl;
+				SetConsoleTextAttribute(hStdOut, 11);
+				system(" pause");
+				SetConsoleTextAttribute(hStdOut, 7);
+				system("cls");
+				}
+
+				// Random High				
+				else if ((guess=='H')||(guess=='h'))
+				{
+					if (iRandTotal>=11)
+					{
+						cout << "     LOW ";
+						cout << " or ";
+						SetConsoleTextAttribute(hStdOut, 10);
+						cout << " HIGH "<<endl;
+						SetConsoleTextAttribute(hStdOut, 7);
+						cout << "    ( 3-11)  (12-18)   "<<endl<<endl;
+						cout << " WOW ! You Won !!";
+						iScore +=1;
+						SetConsoleTextAttribute(hStdOut, 10);
+						cout << " Your Score [+1]"<<endl<<endl;
+						SetConsoleTextAttribute(hStdOut, 7);
+						cout << " Score "<<iScore<< " / " <<creditScore<<" Credit"<<endl;
+					}
+					else if (iRandTotal<=11)
+					{
+						SetConsoleTextAttribute(hStdOut, 10);
+						cout << "     LOW ";
+						SetConsoleTextAttribute(hStdOut, 7);
+						cout << " or ";					
+						cout << " HIGH "<<endl;
+						cout << "    ( 3-11)  (12-18)   "<<endl<<endl;
+						cout << " Ahh ! You Fail !!";
+						SetConsoleTextAttribute(hStdOut, 12);
+						creditScore -=1;
+						cout << " Your Credit [-1]"<<endl<<endl;
+						SetConsoleTextAttribute(hStdOut, 7);
+						cout << " Score "<<iScore<< " / " <<creditScore<<" Credit"<<endl;
+					}
+				cout << " >>> To Play Next Game "<<endl;
+				SetConsoleTextAttribute(hStdOut, 11);
+				system(" pause");
+				SetConsoleTextAttribute(hStdOut, 7);											
+				}	
+				else
+				{
+					inGame = false;
+					system("cls");
+					break;	
+				}								
+			} while(creditScore>0);
+			system("cls");		
+
+			 // 1.5
+			if (creditScore==0)
+			{
+				cout << " ========================"<<endl; 
+				cout << " |                       |"<<endl;
+				cout << " |      GAME OVER !      |"<<endl;
+				cout << " | ";
+				SetConsoleTextAttribute(hStdOut, 14);
+				cout << "Your Total Score "<<iScore<<" !";
+				SetConsoleTextAttribute(hStdOut, 7);
+				cout << "  |"<<endl;
+				cout << " |                       |"<<endl;
+				cout << " ========================"<<endl; 
+				cout <<endl<< " >>> To Play New game"<<endl;
+				SetConsoleTextAttribute(hStdOut, 11);
+				system(" pause");
+				SetConsoleTextAttribute(hStdOut, 7);			
+			}			
+			resetScore=0;
+			iScore=resetScore;
+			resetCredit=creditStart;
+			creditScore=resetCredit;			
+			system("cls");
+			break;
+		// Admin Setting
+		case 2 : 	
+			do
+			{
+				system("cls");
+				cout << " Admin Setting Game"<<endl<<endl;
+				cout << " Player Credit : ";
+				SetConsoleTextAttribute(hStdOut, 14);
+				cout <<" Current [ "<<creditScore<<" ] "<<endl;
+				SetConsoleTextAttribute(hStdOut, 7);
+				cout << " >>> New Setting"<<endl<<endl;
+				SetConsoleTextAttribute(hStdOut, 11);
+				cout << " Enter New Credit (Number): ";
+				cin >> creditStart; 
+				creditScore = creditStart;
+				SetConsoleTextAttribute(hStdOut, 7);
+				cout << endl;
+				cout << " >>>Again YES/NO"<<endl;
+				SetConsoleTextAttribute(hStdOut, 11);
+				cout <<" You select (Y/N) : ";	
+				cin >> again;
+				SetConsoleTextAttribute(hStdOut, 7);
+			} while((again == 'Y') || (again == 'y'));			
+			system("cls");				
+			break;			   	
+		
+		case 3 : 	
+			cout << " Shut Down"<<endl;  
+			break;		   	
+		default : 
+			cout<< " Error !"<<endl;
+			break;		
+		}		
+	} while( (mainOption == 1) || (mainOption == 2) );		
+	return 0;
+}
