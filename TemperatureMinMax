@@ -1,0 +1,58 @@
+#include <iostream>
+using namespace std;
+int main ()
+{
+	float farenheit=0.0, division=5.0/9.0, celsius=0.0, averageF=0.0, averageC=0.0, maxF = -99999, minF = 99999, maxC = -99999, minC = 99999, totalF=0.0, totalC=0.0;
+	int  count=0;
+	char ans; 	
+	do 
+    { 
+        cout << " Enter Farenheit : ";
+		cin >> farenheit;
+		celsius = division*(farenheit-32);
+		cout <<" Celsius is "<<celsius<<endl<<endl;
+		count+=1;
+		totalF+=farenheit;
+		totalC+=celsius;
+        if(maxF == -99999 && minF == 99999) 
+        { 
+            minF = farenheit;
+			minC = celsius; 
+            maxF = farenheit; 
+            maxC = celsius; 
+        }
+        if(farenheit > maxF) 
+        { 
+           	maxF = farenheit; 
+           	maxC = celsius; 
+        } 	
+        else if(farenheit < minF)
+        {
+           	minF = farenheit;
+        	minC = celsius;
+        }       
+		cout << " Farenheit Min = " << minF << " and Max = " << maxF << endl; 		
+        cout << " Celsius Min = " << minC << " and Max = " << maxC << endl<<endl;
+        cout << " Again ? (Y/N) : "; 
+        cin >> ans; 
+        cout <<endl;
+        system ("cls");
+     } 
+     while(ans == 'Y' || ans == 'y'); 
+     cout <<" Count : "<<count<<" Time(s)"<<endl;
+     cout <<" ------------------ "<<endl;
+     cout <<" Summary Farenheit "<<endl;
+     cout <<" ------------------ "<<endl;
+	 cout << " Min Number is " << minF<<endl;
+	 cout << " Max Number is " << maxF<<endl;;
+     averageF=totalF/count;
+     cout <<" Average is "<< averageF<<endl<<endl;
+     cout <<" ------------------ "<<endl;
+     cout <<" Summary Celsius "<<endl;
+     cout <<" ------------------ "<<endl;
+	 cout <<" Min Number is "<< minC<<endl;
+	 cout <<" Max Number is " << maxC<<endl;
+	 averageC=totalC/count;
+	 cout <<" Average is "<< averageC<<endl;	 		
+	return 0;
+}
