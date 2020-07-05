@@ -1,0 +1,155 @@
+#include <iostream>
+using namespace std;
+int main ()
+{
+	int mainOption=0, noteBook=0, pencil=0,eraser=0, priceTotal=0, money=0, change=0;
+	int countNoteBook=0, countPencil=0, countEraser=0, countPriceNotebook=0, countPricePencil=0, countPriceEraser=0, countPriceTotal=0;
+	int b1000, b500, b100, b50, b20, c10, c5, c2, c1; 	
+	char again = 'Y';
+	do
+	{
+		//Main Menu
+		cout << " ======================================="<<endl;
+		cout << " |                                     |"<<endl;
+		cout << " |         Melona's Stationery         |"<<endl;
+		cout << " |                                     |"<<endl;
+		cout << " ======================================="<<endl<<endl;
+		cout << " Admin mode"<<endl;
+		cout << " 1) Product" << endl;
+		cout << " 2) Sale Report" << endl;
+		cout << " 3) Exit" << endl;	    
+		cout <<endl<< " Your Select : ";
+		cin >> mainOption;
+		switch(mainOption)
+		{			
+			case 1 : 
+				//1.1 show product
+				system("cls");
+				cout << " ------------------------------"<<endl;
+				cout << " |          WELCOME !         |"<<endl;
+				cout << " |      Melona's Stationery   |"<<endl;
+				cout << " ------------------------------"<<endl<<endl;
+				cout <<" All Products "<<endl<<endl;
+				cout <<" Note book (10 Baht) "<<endl;
+				cout <<" Pencil (8 Baht) "<<endl;
+				cout <<" Eraeser (6 Baht) "<<endl<<endl;
+				system(" pause");
+				system("cls");
+				
+				// 1.2 Enter Number of Product
+				do
+				{
+					system("cls");
+					cout <<endl<<" Enter Number Note Book (10) : ";
+					cin >> noteBook;
+					countNoteBook+=noteBook;
+					countPriceNotebook+=(noteBook*10);
+					cout << " Price is "<<noteBook*10<<" Baht"<<endl<<endl;
+					
+					cout <<" Enter Number Pencil (8) : ";
+					cin >> pencil;
+					countPencil+=pencil;
+					countPricePencil+=(pencil*8);
+					cout << " Price is "<<pencil*8<<" Baht"<<endl<<endl;
+					
+					cout <<" Enter Number Eraser (6) : ";
+					cin >> eraser;
+					countEraser+=eraser;
+					countPriceEraser+=(eraser*6);
+					priceTotal=(noteBook*10)+(pencil*8)+(eraser*6);			
+					cout << " Price is "<<eraser*6<<" Baht"<<endl;			
+					cout <<endl<< " Total price of product : "<<priceTotal<<" Baht"<<endl;
+					countPriceTotal+=priceTotal;	
+					
+					//1.3 Change money
+					cout << " Enter amount of paid : ";
+					cin >> money;
+					change=money-priceTotal;
+					cout <<endl<<" -------------------------------"<<endl;
+					cout << " Change money total : "<<change<<" Baht"<<endl;	
+					cout <<" -------------------------------"<<endl;
+					
+					b1000 = change / 1000;
+				    change = change % 1000;
+				    b500 = change / 500;
+				    change = change % 500;	 
+				    b100 = change / 100;
+				    change = change % 100;	 
+				    b50 = change / 50;
+				    change = change % 50;	 
+				    b20 = change / 20;
+				    change = change % 20;	 
+				    c10 = change / 10;
+				    change = change % 10;	 
+				    c5 = change / 5;
+				    change = change % 5;	 	 
+				    c2 = change / 2;
+				    change = change % 2; 
+				    c1 = change / 1;
+				    change = change % 1;
+				    
+				    if (b1000>0){
+				    	cout <<" 1000 Baht = "<<b1000<<endl;
+					}
+				     if (b500>0){
+				    	cout <<" 500 Baht = "<<b500<<endl;
+					}
+					 if (b100>0){
+				    	cout <<" 100 Baht = "<<b100<<endl;
+					}
+					 if (b50>0){
+				    	cout <<" 50 Baht = "<<b50<<endl;
+					}
+					 if (b20>0){
+				    	cout <<" 20 Baht = "<<b20<<endl;
+					}
+					 if (c10>0){
+				    	cout <<" 10 Baht = "<<c10<<endl;
+					}
+					 if (c5>0){
+				    	cout <<" 5 Baht = "<<c5<<endl;
+					}
+					 if (c2>0){
+				    	cout <<" 2 Baht = "<<c2<<endl;
+					}
+					 if (c1>0){
+				    	cout <<" 1 Baht = "<<c1<<endl;
+					}
+					cout <<endl<< " Select Again (Y/N) ";
+					cin >> again;
+				} while((again == 'Y') || (again == 'y'));			
+				system("cls");				
+				break;
+				
+			//Report
+			case 2 : 
+				system("cls");
+				cout << " ====================================="<<endl;
+				cout << " |          Total Sale Report         |"<<endl;
+				cout << " ====================================="<<endl<<endl;
+				
+				cout << " Sales Note book = "<<countNoteBook<<" Note book(s)"<<endl;				
+				cout << " Total price is "<<countPriceNotebook <<" Baht"<<endl<<endl;
+
+				cout << " Sales Pencil = "<<countPencil<<" Pencil(s)"<<endl;				
+				cout << " Total price is "<<countPricePencil<<" Baht"<<endl<<endl;
+				
+				cout << " Sales Eraser = "<<countEraser<<" Eraser(s)"<<endl;				
+				cout << " Total price is "<<countPriceEraser <<" Baht"<<endl<<endl;
+				cout << " -------------------------------------"<<endl;
+				cout <<" Amount total is "<<countPriceTotal<<" Baht"<<endl;
+				cout << " -------------------------------------"<<endl<<endl;
+				system(" pause");
+				system("cls");
+				break;		 
+			
+			case 3 : 
+				cout << " Exit"<<endl;  
+				break;
+			default : 
+				cout<< " Error !"<<endl; 
+				break;	
+		}	
+	} while( (mainOption == 1) || (mainOption == 2) );	
+	return 0;	
+}
