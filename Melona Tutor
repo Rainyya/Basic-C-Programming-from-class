@@ -1,0 +1,78 @@
+#include <iostream>
+using namespace std;
+int main() 
+{
+	int student=0, price=0, hour=0, studentMoney=0, studentChange=0, change=0;
+	int countStudent=0, countPrice=0;
+	char again = 'Y';
+	do
+	{
+		cout <<" ============================="<<endl;
+		cout <<" Melona's Tutor"<<endl;
+		cout <<" ============================="<<endl<<endl;
+		cout <<" Enter number of students : ";
+		cin >> student;
+		cout << " Enter number of hours : ";
+		cin >> hour;
+		if (student==1)
+		{
+			price=hour*500;
+			countStudent+=student;
+			countPrice+=price*student;
+			cout <<" Price per hour is 500 Baht "<<endl;
+		}
+		if (student==2)
+		{
+			price=hour*450;
+			countStudent+=student;
+			countPrice+=price*student;
+			cout <<" Price per hour is 450 Baht "<<endl;
+		}
+		if (student==3)
+		{
+			price=hour*400;
+			countStudent+=student;
+			countPrice+=price*student;
+			cout <<" Price per hour is 400 Baht "<<endl;
+		}
+		if (student==4)
+		{
+			price=hour*350;
+			countStudent+=student;
+			countPrice+=price*student;
+			cout <<" Price per hour is 350 Baht "<<endl;
+		}
+		if (student>=5)
+		{
+			price=hour*300;
+			countStudent+=student;
+			countPrice+=price*student;
+			cout <<" Price per hour is 300 Baht "<<endl;
+		}
+		cout <<endl<<" Total price is : "<<price*student<<" Baht"<<endl; 
+		cout <<" Count of students = "<<student<<" student(s)"<<endl;
+		cout <<" Price per person is : "<<price<<" Bath"<<endl<<endl;
+		
+		for ( int a=1;a<=student;a++)
+		{
+			cout <<" ------------------------"<<endl;
+			cout <<" Money Change "<<endl;
+			cout <<" ------------------------"<<endl;
+			cout <<" Student : "<<a<<endl;
+			cout << " Enter Money : ";
+			cin >> studentMoney;
+			change=studentMoney-price;
+			cout << " Change : "<<change<<" Baht"<<endl<<endl;
+		}
+		cout << "Again ? (Y/N) : ";
+		cin >> again;
+		system("cls");		
+	} while((again == 'Y') || (again == 'y'));	
+	cout <<" ------------------------"<<endl;
+	cout << " Summary today : "<<endl;
+	cout <<" ------------------------"<<endl;
+	cout <<" Income total is "<<countPrice<<" Baht "<<endl;
+	cout <<" Count of students = "<<countStudent<<" student(s)"<<endl;
+
+	return 0;
+}
